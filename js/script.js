@@ -1,6 +1,15 @@
 // Prompt
-var kmUtente = prompt("Ciao! Quanti Km vuoi percorrere?");
-var eta = prompt("Bene! Ora digita la tua età!");
+var kmUtente = parseInt( prompt("Ciao! Quanti Km vuoi percorrere?") );
+
+if( isNaN(kmUtente) ){
+  kmUtente = parseInt( prompt("Non hai digitato dei Numeri!"));
+}
+
+var eta = parseInt( prompt("Ora digita la tua età!"));
+
+if( isNaN(eta) ){
+  eta = parseInt( prompt("Inserisci dei Numeri!"));
+}
 // /Prompt
 
 // Prezzi
@@ -17,15 +26,20 @@ var prezzoOver65 = prezzoBase - sconto65;
 // Prezzi
 
 // Prezzo UTENTE
-if (eta < 18) {
-  var prezzoUtente = prezzoUnder18;
+var prezzoUtente = prezzoBase;
+
+if (eta <= 18) {
+  prezzoUtente = prezzoUnder18;
 }
-else if(eta > 65){
+else if(eta >= 65) {
   prezzoUtente = prezzoOver65;
 }
-else{
-  prezzoUtente = prezzoBase;
-}
 
-document.getElementById("prezzo").innerHTML = prezzoUtente;
+if(isNaN(kmUtente) || isNaN(eta)){
+  alert("Non hai inserito dei numeri!!");
+  document.getElementById("prezzo").innerHTML = ("Ricarica la pagina!");
+}
+else{
+  document.getElementById("prezzo").innerHTML = prezzoUtente.toFixed(2) + "€";
+}
 // /Prezzo UTENTE

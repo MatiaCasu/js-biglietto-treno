@@ -28,7 +28,7 @@ var prezzoOver65 = prezzoBase - sconto65;
 // Prezzo UTENTE
 var prezzoUtente = prezzoBase;
 
-if (eta <= 18) {
+if (eta < 18) {
   prezzoUtente = prezzoUnder18;
 }
 else if(eta >= 65) {
